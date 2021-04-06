@@ -1,0 +1,40 @@
+@import 'variables';
+@mixin hoge($width, $scale) {
+  width: $width;
+  height: $width/16*9;
+  margin: 0 -1*$width*(1-$scale) -1*$width/16*9*(1-$scale) 0;
+  transform: scale($scale);
+  transform-origin: 0;
+}
+
+
+#web {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  iframe {
+    @include hoge(700px, 0.4);
+    @include mq(lg) {
+      @include hoge(500px, 0.4);
+    }
+    pointer-events: none;
+    display: block;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  .sp {
+    width: 400px;
+    height: 700px;
+    margin: 0 -200px -350px 0;
+    transform: scale(0.3);
+  }
+}
+
+#photo {
+  display: flex;
+  flex-wrap: wrap;
+  img {
+    width: 150px;
+  }
+}
